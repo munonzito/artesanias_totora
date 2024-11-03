@@ -19,7 +19,7 @@
 
       <ul 
         :class="['lg:flex', isMenuOpen ? 'block' : 'hidden']"
-        class="flex flex-col lg:flex-row items-center lg:space-x-8 text-gray-600 font-medium space-y-4 lg:space-y-0 mt-4 lg:mt-0"
+        class="flex flex-col text-center lg:flex-row items-center lg:space-x-8 text-gray-600 font-medium space-y-4 lg:space-y-0 mt-4 lg:mt-0"
       >
         <li>
           <NuxtLink
