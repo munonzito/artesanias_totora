@@ -23,7 +23,6 @@
       >
         <li>
           <NuxtLink
-            to="#inicio"
             class="hover:text-gray-800 hover:underline underline-offset-4"
             :class="{ 'border-b-2 border-orange-600 pb-1': activeSection === 'inicio' }"
             @click.prevent="scrollToSection('inicio')"
@@ -33,7 +32,6 @@
         </li>
         <li>
           <NuxtLink
-            to="#products"
             class="hover:text-gray-800 hover:underline underline-offset-4"
             :class="{ 'border-b-2 border-orange-600 pb-1': activeSection === 'products' }"
             @click.prevent="scrollToSection('products')"
@@ -43,7 +41,6 @@
         </li>
         <li>
           <NuxtLink
-            to="#contact"
             class="hover:text-gray-800 hover:underline underline-offset-4"
             :class="{ 'border-b-2 border-orange-600 pb-1': activeSection === 'contact' }"
             @click.prevent="scrollToSection('contact')"
@@ -53,7 +50,6 @@
         </li>
         <li>
           <NuxtLink
-            to="#about"
             class="hover:text-gray-800 hover:underline underline-offset-4"
             :class="{ 'border-b-2 border-orange-600 pb-1': activeSection === 'about' }"
             @click.prevent="scrollToSection('about')"
@@ -80,17 +76,20 @@ const setActiveSection = (section) => {
   activeSection.value = section;
 };
 
-// Función para desplazar suavemente a la sección
 const scrollToSection = (section) => {
   const sectionElement = document.getElementById(section);
   if (sectionElement) {
-    sectionElement.scrollIntoView({
-      behavior: 'smooth', // Desplazamiento suave
-      block: 'start'      // Al inicio de la sección
+    // Calcula la posición deseada restando la altura del navbar y 20 píxeles adicionales
+    const navbarHeight = 80; // Ajusta esta altura según el tamaño de tu navbar
+    const sectionOffset = sectionElement.offsetTop - navbarHeight;
+    window.scrollTo({
+      top: sectionOffset,
+      behavior: 'smooth' // Desplazamiento suave
     });
   }
   setActiveSection(section); // Actualiza la sección activa
 };
+
 
 // Función para actualizar la sección activa según el desplazamiento
 const handleScroll = () => {
@@ -124,3 +123,4 @@ body {
   padding-top: 80px; /* Ajusta el espacio para el navbar fijo */
 }
 </style>
+
